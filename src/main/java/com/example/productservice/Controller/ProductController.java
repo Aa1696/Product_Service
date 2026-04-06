@@ -1,19 +1,51 @@
 package com.example.productservice.Controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.productservice.DTO.FakseStoreProductDto;
+import com.example.productservice.Models.Product;
+import com.example.productservice.Services.ProductServcie;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/product")
+@RequestMapping("/api/product")
 public class ProductController {
 
-    @GetMapping("/{id}")
-    public String getPRoductById(@PathVariable String id) {
+    private final ProductServcie productServcie;
 
-        return "Id doesn't exist";
+    public ProductController(ProductServcie productServcie) {
+        this.productServcie = productServcie;
+    }
+
+    @GetMapping("/{id}")
+    public Product getPRoductById(@PathVariable String id) {
+
+        return null;
         
     }
+
+    @GetMapping()
+    public List<Product> getProducts() {
+        return null;
+    }
+
+    @PutMapping("/{id}")
+    public Product updateProduct(@RequestBody Product product, @PathVariable String id) {
+        return null;
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteProduct(@PathVariable String id) {
+        return ;
+    }
+
+    @PostMapping
+    public Product createProduct(@RequestBody FakseStoreProductDto product) {
+
+        return productServcie.createProduct(product);
+
+    }
+
+    //In future we will add the bulk update controller
     
 }
